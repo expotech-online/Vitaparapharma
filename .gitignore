@@ -1,0 +1,14 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Local Properties / Configurations ###
+src/main/resources/application-dev.yml
+src/main/resources/firebase.json
+.env
+versions.txt
+
+### Build Directory ###
+target/

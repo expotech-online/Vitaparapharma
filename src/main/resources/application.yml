@@ -1,0 +1,30 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${application.security.oauth2.client.registration.google.client-id}
+            client-secret: ${application.security.oauth2.client.registration.google.client-secret}
+            scope: openid,profile,email
+            redirect-uri: https://api.vitaparapharma.com/login/oauth2/code/{registrationId}
+          facebook:
+            client-id: ${application.security.oauth2.client.registration.facebook.client-id}
+            client-secret: ${application.security.oauth2.client.registration.facebook.client-secret}
+            redirect-uri: https://api.vitaparapharma.com/login/oauth2/code/{registrationId}
+  datasource:
+    url: ${application.datasource.url}
+    username: ${application.datasource.username}
+    password: ${application.datasource.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    active: dev
