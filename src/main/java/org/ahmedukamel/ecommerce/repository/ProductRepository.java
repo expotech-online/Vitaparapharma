@@ -17,6 +17,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = """
             SELECT MIN (p.price), MAX (p.price)
-            FROM Product p""")
+            FROM Product p
+            WHERE p.active = true""")
     Object getMinMax();
 }
