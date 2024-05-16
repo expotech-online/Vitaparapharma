@@ -37,4 +37,6 @@ public interface ITempProductService {
     ApiResponse getProductsByCategoryForUser(int categoryId, long pageSize, long pageNumber);
 
     ApiResponse getProductsByMainCategoryForUser(int mainCategoryId, long pageSize, long pageNumber);
+
+    ApiResponse getMinMaxPrice();
 }

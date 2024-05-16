@@ -330,6 +330,14 @@ public class TempProductService implements ITempProductService {
         return new ApiResponse(true, "Products have been returned successfully.", Map.of("products", responseList, "count", products.size()));
     }
 
+    @Override
+    public ApiResponse getMinMaxPrice() {
+        Object object = productRepository.getMinMax();
+        Object[] range = (Object[]) object;
+        return new ApiResponse(true, "Get minimum and maximum products price",
+                Map.of("min", range[0], "max", range[1]));
+    }
+
     public void userResponse(ProductResponse response) {
         response.setInCart(cartItemRepository.existsByCart_Customer_CustomerIdAndProduct_ProductId(SecurityContextUtils.getPrinciple().getCustomerId(), response.getProductId()));
         response.setInWishlist(wishlistItemRepository.existsByWishlist_Customer_CustomerIdAndProduct_ProductId(SecurityContextUtils.getPrinciple().getCustomerId(), response.getProductId()));

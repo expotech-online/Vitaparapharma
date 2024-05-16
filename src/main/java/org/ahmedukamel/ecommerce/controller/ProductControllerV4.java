@@ -162,6 +162,12 @@ public class ProductControllerV4 {
         return ResponseUtils.acceptedResponse(response);
     }
 
+    @GetMapping(value = "public/product/min-max-price")
+    public ResponseEntity<ApiResponse> getMinMaxPrice() {
+        ApiResponse response = service.getMinMaxPrice();
+        return ResponseUtils.acceptedResponse(response);
+    }
+
     // TODO: Pagination
     @GetMapping(value = "user/product/all")
     public ResponseEntity<ApiResponse> getAllProductsForUser(@Min(value = 1) @RequestParam(value = "size", defaultValue = "10") long pageSize,
